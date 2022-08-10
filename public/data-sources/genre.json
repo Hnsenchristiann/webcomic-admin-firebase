@@ -1,0 +1,7 @@
+{"data":[
+    {"id":1, "name": "Horror"},
+    {"id":2, "name": "Scifi"},
+    {"id":3, "name": "Adventure"},
+    {"id":4, "name": "Romance"},
+    {"id":5, "name": "Drama"}
+]}
