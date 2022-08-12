@@ -1,8 +1,9 @@
 import ComicList from '../../../src/views/comic/List.vue'
 import ComicAdd from '../../../src/views/comic/Add.vue'
 import ComicEdit from '../../../src/views/comic/Edit.vue'
-import { mount } from '@vue/test-utils'
+import { mount, flushPromises } from '@vue/test-utils'
 import options from '../../utils/pluginInitializer.js'
+import { nextTick } from 'vue'
 import storeMock from '../../__mocks__/storeMock.js'
 
 test('ComicList', async () => {
@@ -35,15 +36,18 @@ test('ComicAdd', async () => {
         global: {
             plugins: [...Object.values(options.plugins)],
             components: {...options.components}
-        }
+        },
     })
+
+    const currentComic = wrapper.vm.comic
+    currentComic.tags = 'testing tags', 'testing tags2'
+    currentComic.categories = 'testing categories', 'testing categories2'
+    currentComic.authors = 'testing authors'
+    wrapper.setData({comic: currentComic})
 
     const promises = [
         wrapper.find('input[name="comicTitle"]').setValue('testing'),
-        // wrapper.find('input[name="comicAuthorsName"]').setValue('Budi'),
-        wrapper.find('input[name="comicGenre"]').setValue('horror'),
-        wrapper.find('input[name="comicTag"]').setValue('scifi'),
-        wrapper.find('input[name="file_upload"]').setValue('gs://comics-77200.appspot.com/cpt-prev.jpg')
+        wrapper.find('textarea').setValue('testing comic description'),
     ]
 
     await Promise.all(promises)
@@ -54,12 +58,41 @@ test('ComicAdd', async () => {
     await flushPromises()
     await flushPromises()
     await flushPromises()
-    
-    expect(storeMock.getState(['comics', 'comic-new', 'title', 'chapter-new'])).toEqual('testing')
-    // expect(storeMock.getState(['comics', 'comic-new', 'authors_data', 'name'])).toEqual(false)
-    expect(storeMock.getState(['comics', 'comic-new', 'categories', 'name'])).toEqual('horror')
-    expect(storeMock.getState(['comics', 'comic-new', 'tags', 'name'])).toEqual('scifi')
-    expect(storeMock.getState(['comics', 'comic-new', 'cover_image_url'])).toEqual('1')
+
+    const item = storeMock.getState(['comics'])
+
+    console.log(item)
+
+    const isNewComicName = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].title == 'testing'
+        return acc
+    }, false);
+
+    const isNewComicDescription = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].description == 'testing comic description'
+        return acc
+    }, false);
+
+    const isNewComictag = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].tags == 'testing tags', 'testing tags2'
+        return acc
+    }, false);
+
+    const isNewComicGenre = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].categories == 'testing categories', 'testing categories2'
+        return acc
+    }, false);
+
+    const isNewComicAuthors = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].authors == 'testing authors'
+        return acc
+    }, false);
+
+    expect(isNewComicName).toEqual(true)
+    expect(isNewComicDescription).toEqual(true)
+    expect(isNewComictag).toEqual(true)
+    expect(isNewComicGenre).toEqual(true)
+    expect(isNewComicAuthors).toEqual(true)
 
     expect(wrapper.find('#hero-bar').text()).toContain('Add a New Comic')
     expect(wrapper.find('#card-component-title').exists()).toBe(false)
@@ -80,6 +113,12 @@ test('ComicAdd', async () => {
 
 test('ComicEdit', async () => {
     window.localStorage.setItem('uid', 'test-uid')
+    options.plugins.router.push({ name: 'comicEdit', params: { id: 'comic-1' } })
+    await options.plugins.router.isReady()
+    await nextTick()
+    await nextTick()
+    await flushPromises()
+    await flushPromises()
     const wrapper = mount(ComicEdit, {
         global: {
             plugins: [...Object.values(options.plugins)],
@@ -87,15 +126,11 @@ test('ComicEdit', async () => {
         }
     })
 
-    const comicTitle = wrapper.find('input[name="comicTitle"]')
-    await comicTitle.setValue('some value')
+    expect(storeMock.getState(['comics', 'comic-1', 'title'])).toEqual('hard drive 2000')
+    expect(storeMock.getState(['comics', 'comic-1', 'description'])).toEqual('Eligendi sed amet eum odit qui voluptas. Possimus voluptatibus nemo minus sapiente rerum delectus. Odit occaecati voluptates quos. Aperiam quasi voluptatem itaque voluptatem beatae. Sint occaecati eius enim aut rerum quaerat.')
+    expect(storeMock.getState(['comics', 'comic-1', 'tags'])).toEqual(['horror', 'scifi'])
+    expect(storeMock.getState(['comics', 'comic-1', 'categories'])).toEqual(['horror', 'scifi'])
 
-    expect(wrapper.find('input[type="text"]').element.value).toBe('')
-
-    const comicRelease = wrapper.find('input[name="comicRelease"]')
-    await comicRelease.setValue('some value')
-
-    expect(wrapper.find('input[type="text"]').element.value).toBe('')
 
     expect(wrapper.find('#hero-bar').text()).toContain('Edit Comic')
     expect(wrapper.find('#card-component-title').exists()).toBe(false)

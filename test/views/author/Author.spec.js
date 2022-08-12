@@ -34,26 +34,21 @@ test('AuthorList', async () => {
 })
 
 test('AuthorAdd', async () => {
-    const mockRouter = {
-        push: jest.fn()
-    }
     window.localStorage.setItem('uid', 'test-uid')
     const wrapper = mount(AuthorAdd, {
         global: {
             plugins: [...Object.values(options.plugins)],
             components: {...options.components}
-        },
-        mocks: {
-            $router: mockRouter
         }
     })
 
     const promises = [
         wrapper.find('input[name="authorName"]').setValue('testing'),
         wrapper.find('input[name="authorEmail"]').setValue('testing@gmail.com'),
-        wrapper.find('input[name="authorFacebook"]').setValue('facebook.com'),
-        wrapper.find('input[name="authorTwitter"]').setValue('twitter.com'),
-        wrapper.find('input[name="authorInstagram"]').setValue('instagram.com'),
+        wrapper.find('textarea').setValue('testing author description'),
+        wrapper.find('input[name="authorFacebook"]').setValue('facebook/testing.com'),
+        wrapper.find('input[name="authorTwitter"]').setValue('twitter/testing.com'),
+        wrapper.find('input[name="authorInstagram"]').setValue('instagram/testing.com')
     ]
 
     await Promise.all(promises)
@@ -64,39 +59,47 @@ test('AuthorAdd', async () => {
     await flushPromises()
     await flushPromises()
     await flushPromises()
-    
-    expect(storeMock.getState(['authors', 'author-new', 'name'])).toEqual('testing')
-    expect(storeMock.getState(['authors', 'author-new', 'email'])).toEqual('testing@gmail.com')
 
-    // const authorName = wrapper.find('input[name="authorName"]')
-    // await authorName.setValue('some value')
+    const item = storeMock.getState(['authors'])
 
-    // expect(wrapper.find('input[type="text"]').element.value).toBe('some value')
+    console.log(item)
 
-    // const authorEmail = wrapper.find('input[name="authorEmail"]')
-    // await authorEmail.setValue('some value')
+    const isNewAuthorName = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].name == 'testing'
+        return acc
+    }, false);
 
-    // expect(wrapper.find('input[type="text"]').element.value).toBe('some value')
+    const isNewAuthorEmail = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].email == 'testing@gmail.com'
+        return acc
+    }, false);
 
-    const authorDes = wrapper.find('textarea')
-    await authorDes.setValue('some value')
+    const isNewAuthorDescription = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].description == 'testing author description'
+        return acc
+    }, false);
 
-    expect(wrapper.find('textarea').element.value).toBe('some value')
+    const isNewAuthorfacebook = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].social_media_links.facebook == 'facebook/testing.com'
+        return acc
+    }, false);
 
-    // const authorFacebook = wrapper.find('input[name="authorFacebook"]')
-    // await authorFacebook.setValue('some value')
+    const isNewAuthorTwitter = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].social_media_links.twitter == 'twitter/testing.com'
+        return acc
+    }, false);
 
-    // expect(wrapper.find('input[type="text"]').element.value).toBe('some value')
+    const isNewAuthorInstagram = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].social_media_links.instagram == 'instagram/testing.com'
+        return acc
+    }, false);
 
-    // const authorTwitter = wrapper.find('input[name="authorTwitter"]')
-    // await authorTwitter.setValue('some value')
-
-    // expect(wrapper.find('input[type="text"]').element.value).toBe('some value')
-
-    // const authorInstagram = wrapper.find('input[name="authorInstagram"]')
-    // await authorInstagram.setValue('some value')
-
-    // expect(wrapper.find('input[type="text"]').element.value).toBe('some value')
+    expect(isNewAuthorName).toEqual(true)
+    expect(isNewAuthorEmail).toEqual(true)
+    expect(isNewAuthorDescription).toEqual(true)
+    expect(isNewAuthorfacebook).toEqual(true)
+    expect(isNewAuthorTwitter).toEqual(true)
+    expect(isNewAuthorInstagram).toEqual(true)
 
     expect(wrapper.find('#hero-bar').text()).toContain('Add a New Author')
     expect(wrapper.find('#card-component-title').exists()).toBe(false)
@@ -134,36 +137,12 @@ test('AuthorEdit', async () => {
         }
     })
 
-    const authorName = wrapper.find('input[name="authorName"]')
-    await authorName.setValue('some value')
-
-    expect(wrapper.find('input[type="text"]').element.value).toBe('some value')
-
-    const authorEmail = wrapper.find('input[name="authorEmail"]')
-    await authorEmail.setValue('some value')
-
-    expect(wrapper.find('input[type="text"]').element.value).toBe('some value')
-
-    const authorFacebook = wrapper.find('input[name="authorFacebook"]')
-    await authorFacebook.setValue('some value')
-
-    expect(wrapper.find('input[type="text"]').element.value).toBe('Andra Fembriarto')
-
-    const authorTwitter = wrapper.find('input[name="authorTwitter"]')
-    await authorTwitter.setValue('some value')
-
-    expect(wrapper.find('input[type="text"]').element.value).toBe('Andra Fembriarto')
-
-    const authorInstagram = wrapper.find('input[name="authorInstagram"]')
-    await authorInstagram.setValue('some value')
-
-    expect(wrapper.find('input[type="text"]').element.value).toBe('Andra Fembriarto')
-
-    const authorDes = wrapper.find('textarea')
-    await authorDes.setValue('some value')
-
-    expect(wrapper.find('textarea').element.value).toBe('some value')
-
+    expect(storeMock.getState(['authors', 'author-1', 'name'])).toEqual('Andra Fembriarto')
+    expect(storeMock.getState(['authors', 'author-1', 'email'])).toEqual('author1@mail.com')
+    expect(storeMock.getState(['authors', 'author-1', 'social_media_links', 'facebook'])).toEqual('https://facebook.com')
+    expect(storeMock.getState(['authors', 'author-1', 'social_media_links', 'twitter'])).toEqual('https://twitter.com')
+    expect(storeMock.getState(['authors', 'author-1', 'social_media_links', 'instagram'])).toEqual('https://instagram.com')
+    expect(storeMock.getState(['authors', 'author-1', 'description'])).toEqual('He is the writer of Kara, Guardian of Realms. He has been writing for 10 years.')
 
     expect(wrapper.find('#hero-bar').text()).toContain('Edit Author')
     expect(wrapper.find('#card-component-title').exists()).toBe(false)

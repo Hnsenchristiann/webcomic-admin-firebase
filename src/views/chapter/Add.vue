@@ -201,22 +201,22 @@ export default {
 						throw err
 					}
 				}
-				this.$toast.open({
-					message: 'Success!',
-					type: 'success',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: 'Success!',
+				// 	type: 'success',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			} catch (err) {
-				console.error(err)
-				this.$toast.open({
-					message: err.toString(),
-					type: 'error',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// console.error(err)
+				// this.$toast.open({
+				// 	message: err.toString(),
+				// 	type: 'error',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			}
 			this.$router.back()
 		}

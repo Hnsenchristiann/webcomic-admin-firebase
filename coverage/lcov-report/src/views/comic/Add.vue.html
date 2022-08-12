@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">13.04% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/46</span>
+                <span class='fraction'>11/44</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">41.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/12</span>
+                <span class='fraction'>5/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">13.33% </span>
+                <span class="strong">25.58% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/45</span>
+                <span class='fraction'>11/43</span>
             </div>
         
             
@@ -1133,20 +1133,17 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1156,7 +1153,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1275,7 +1275,7 @@
               Genres
             &lt;/label&gt;
             &lt;Listbox
-              name="comicGenre"
+              class="comic-genre"
               v-model="comic.categories"
               :items="categories"
               :settings="{valueField: 'name', nameField: 'name', idField: 'id'}"
@@ -1297,7 +1297,7 @@
               Tags
             &lt;/label&gt;
             &lt;Listbox
-              name="comicTag"
+              class="comic-tag"
               v-model="comic.tags"
               :items="tags"
               :settings="{valueField: 'name', nameField: 'name', idField: 'id'}"
@@ -1322,22 +1322,22 @@
             id="exampleFormControlTextarea1"
             v-model="comic.description"
             class="
-                    form-control
-                    block
-                    w-full
-                    px-3
-                    py-1.5
-                    text-base
-                    font-normal
-                    text-gray-700
-                    bg-white bg-clip-padding
-                    border border-solid border-gray-300
-                    rounded
-                    transition
-                    ease-in-out
-                    m-0
-                    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-                    "
+              form-control
+              block
+              w-full
+              px-3
+              py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding
+              border border-solid border-gray-300
+              rounded
+              transition
+              ease-in-out
+              m-0
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+              "
             rows="3"
             placeholder="Please Enter Author Description"
           /&gt;
@@ -1703,13 +1703,13 @@ export default {
 		async fetchCategories () {
 			this.categories = await Category.getDocuments()
 		},
-<span class="fstat-no" title="function not covered" >		async s</span>ubmitData () {
-<span class="cstat-no" title="statement not covered" >			try {</span>
+		async submitData () {
+			try {
 				// eslint-disable-next-line camelcase
-				const { authors, authors_data, categories, tags, title, description } = <span class="cstat-no" title="statement not covered" >this.comic</span>
-				const newComic = <span class="cstat-no" title="statement not covered" >await C</span>omic.createDocument({ authors, authors_data, categories, tags, title, description, release_date: new Date() })
-<span class="cstat-no" title="statement not covered" >				console.</span>log(newComic)
-<span class="cstat-no" title="statement not covered" >				<span class="missing-if-branch" title="if path not taken" >I</span>if (this.coverImageChanged) {</span>
+				const { authors, authors_data, categories, tags, title, description } = this.comic
+				const newComic = await Comic.createDocument({ authors, authors_data, categories, tags, title, description, release_date: new Date() })
+				console.log(newComic)
+				<span class="missing-if-branch" title="if path not taken" >I</span>if (this.coverImageChanged) {
 <span class="cstat-no" title="statement not covered" >					try {</span>
 <span class="cstat-no" title="statement not covered" >						await n</span>ewComic.adminUploadField('cover_image_url', 'covers/' + newComic.id, this.coverImage)
 					} catch (err) {
@@ -1719,21 +1719,21 @@ export default {
 <span class="cstat-no" title="statement not covered" >						throw e</span>rr
 					}
 				}
-<span class="cstat-no" title="statement not covered" >				this.$</span>toast.open({
-					message: 'Success!',
-					type: 'success',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: 'Success!',
+				// 	type: 'success',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			} catch (err) {
-<span class="cstat-no" title="statement not covered" >				this.$</span>toast.open({
-					message: err.toString(),
-					type: 'error',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: err.toString(),
+				// 	type: 'error',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			}
 &nbsp;
 			// this.comic.updateDocument(processedData)
@@ -1783,7 +1783,7 @@ const titleStack = ref(['Admin', 'Comic', 'Add'])
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-10T08:50:55.630Z
+                at 2022-08-12T10:51:09.875Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

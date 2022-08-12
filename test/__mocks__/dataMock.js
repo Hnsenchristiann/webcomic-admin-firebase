@@ -253,7 +253,7 @@ export default {
     authors: {
         'author-1': {
             description: 'He is the writer of Kara, Guardian of Realms. He has been writing for 10 years.',
-            social_media_links: { facebook: 'https://facebook.com', twitter: 'https://twitter.com', instagram: 'hhtps://instagram.com' },
+            social_media_links: { facebook: 'https://facebook.com', twitter: 'https://twitter.com', instagram: 'https://instagram.com' },
             email: 'author1@mail.com',
             name: 'Andra Fembriarto',
             user_id: null,
@@ -261,7 +261,7 @@ export default {
         },
         'author-2': {
             description: 'He is the writer of Kara, Guardian of Realms. He has been writing for 10 years.',
-            social_media_links: { facebook: 'https://facebook.com', twitter: 'https://twitter.com', instagram: 'hhtps://instagram.com' },
+            social_media_links: { facebook: 'https://facebook.com', twitter: 'https://twitter.com', instagram: 'https://instagram.com' },
             email: 'author2@mail.com',
             name: 'Andra Fembriarto',
             user_id: null,

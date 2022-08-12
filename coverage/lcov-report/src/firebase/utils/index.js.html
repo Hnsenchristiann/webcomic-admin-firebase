@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.18% </span>
+                <span class="strong">54.54% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>21/55</span>
+                <span class='fraction'>30/55</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">10% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/10</span>
+                <span class='fraction'>2/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">7.14% </span>
+                <span class="strong">28.57% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/14</span>
+                <span class='fraction'>4/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.03% </span>
+                <span class="strong">53.7% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/54</span>
+                <span class='fraction'>29/54</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -215,7 +215,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -224,12 +224,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -239,15 +238,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -277,13 +277,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -355,21 +355,21 @@ import emitter from '@/utils/emitter.js'
 let medias = {}
 let cache = {}
 &nbsp;
-const getBlob = <span class="fstat-no" title="function not covered" >as</span>ync (gsPath) =&gt; {
-<span class="cstat-no" title="statement not covered" >    return await getStorageBlob(ref(firebase.storage, gsPath))</span>
+const getBlob = async (gsPath) =&gt; {
+    return await getStorageBlob(ref(firebase.storage, gsPath))
 }
 &nbsp;
 const getResourceUrlFromStorage = <span class="fstat-no" title="function not covered" >as</span>ync (gsPath) =&gt; {
 <span class="cstat-no" title="statement not covered" >    return await getDownloadURL(ref(firebase.storage, gsPath))</span>
 }
 &nbsp;
-const getDataUrlFromStorage = <span class="fstat-no" title="function not covered" >as</span>ync (gsPath) =&gt; {
+const getDataUrlFromStorage = async (gsPath) =&gt; {
     let blob
-<span class="cstat-no" title="statement not covered" >    if(gsPath in cache){</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(gsPath in cache){
 <span class="cstat-no" title="statement not covered" >        blob = cache[gsPath]</span>
     }else{
-<span class="cstat-no" title="statement not covered" >        blob = await getBlob(gsPath)</span>
-<span class="cstat-no" title="statement not covered" >        cache[gsPath] = blob</span>
+        blob = await getBlob(gsPath)
+        cache[gsPath] = blob
     }
     // return URL.createObjectURL(blob)
     // var img = document.createElement('img');
@@ -380,15 +380,15 @@ const getDataUrlFromStorage = <span class="fstat-no" title="function not covered
     //     URL.revokeObjectURL(url)
     // }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return await new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
-        var a = <span class="cstat-no" title="statement not covered" >new FileReader();</span>
-<span class="cstat-no" title="statement not covered" >        a.onload = <span class="fstat-no" title="function not covered" >fu</span>nction(e) {</span>
+    return await new Promise((resolve, reject) =&gt; {
+        var a = new FileReader();
+        a.onload = <span class="fstat-no" title="function not covered" >fu</span>nction(e) {
 <span class="cstat-no" title="statement not covered" >            resolve(e.target.result);</span>
         }
-<span class="cstat-no" title="statement not covered" >        a.onerror = <span class="fstat-no" title="function not covered" >fu</span>nction(e){</span>
+        a.onerror = <span class="fstat-no" title="function not covered" >fu</span>nction(e){
 <span class="cstat-no" title="statement not covered" >            reject(e);</span>
         }
-<span class="cstat-no" title="statement not covered" >        a.readAsDataURL(blob);</span>
+        a.readAsDataURL(blob);
     })
 }
 &nbsp;
@@ -493,7 +493,7 @@ export default { getResourceUrlFromStorage, handleError, getBlob, getDataUrlFrom
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-10T10:05:23.749Z
+                at 2022-08-12T10:57:03.712Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -167,56 +167,7 @@
 <a name='L102'></a><a href='#L102'>102</a>
 <a name='L103'></a><a href='#L103'>103</a>
 <a name='L104'></a><a href='#L104'>104</a>
-<a name='L105'></a><a href='#L105'>105</a>
-<a name='L106'></a><a href='#L106'>106</a>
-<a name='L107'></a><a href='#L107'>107</a>
-<a name='L108'></a><a href='#L108'>108</a>
-<a name='L109'></a><a href='#L109'>109</a>
-<a name='L110'></a><a href='#L110'>110</a>
-<a name='L111'></a><a href='#L111'>111</a>
-<a name='L112'></a><a href='#L112'>112</a>
-<a name='L113'></a><a href='#L113'>113</a>
-<a name='L114'></a><a href='#L114'>114</a>
-<a name='L115'></a><a href='#L115'>115</a>
-<a name='L116'></a><a href='#L116'>116</a>
-<a name='L117'></a><a href='#L117'>117</a>
-<a name='L118'></a><a href='#L118'>118</a>
-<a name='L119'></a><a href='#L119'>119</a>
-<a name='L120'></a><a href='#L120'>120</a>
-<a name='L121'></a><a href='#L121'>121</a>
-<a name='L122'></a><a href='#L122'>122</a>
-<a name='L123'></a><a href='#L123'>123</a>
-<a name='L124'></a><a href='#L124'>124</a>
-<a name='L125'></a><a href='#L125'>125</a>
-<a name='L126'></a><a href='#L126'>126</a>
-<a name='L127'></a><a href='#L127'>127</a>
-<a name='L128'></a><a href='#L128'>128</a>
-<a name='L129'></a><a href='#L129'>129</a>
-<a name='L130'></a><a href='#L130'>130</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L105'></a><a href='#L105'>105</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -284,8 +235,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -323,61 +273,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
   &lt;div class="w-full"&gt;
-    &lt;Listbox
-      v-model="localModelValue"
-      multiple
-    &gt;
+    &lt;Listbox v-model="localModelValue" multiple&gt;
       &lt;div class="relative mt-1"&gt;
-        &lt;ListboxButton
-          class="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
-        &gt;
-          &lt;span class="block truncate"&gt;{{ ((settings.modelNameField ? localModelValue.map(v =&gt; v[settings.modelNameField]) : localModelValue) ?? ['']).join(', ') }}&lt;/span&gt;
-          &lt;span
-            class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2"
-          &gt;
-            &lt;SelectorIcon
-              class="h-5 w-5 text-gray-400"
-              aria-hidden="true"
-            /&gt;
-          &lt;/span&gt;
+        &lt;ListboxButton class="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"&gt;
+          &lt;span id="list-model" class="block truncate"&gt;{{ ((settings.modelNameField ? localModelValue.map(v =&gt; v[settings.modelNameField]) : localModelValue) ?? ['']).join(', ') }}&lt;/span&gt;
+          &lt;span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2"&gt;
+              &lt;SelectorIcon
+                class="h-5 w-5 text-gray-400"
+                aria-hidden="true"
+              /&gt;
+            &lt;/span&gt;
         &lt;/ListboxButton&gt;
-&nbsp;
-        &lt;transition
-          leave-active-class="transition duration-100 ease-in"
-          leave-from-class="opacity-100"
-          leave-to-class="opacity-0"
-        &gt;
-          &lt;ListboxOptions
-            class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
-          &gt;
-            &lt;ListboxOption
-              v-for="item in items"
-              v-slot="{ active, selected }"
-              :key="item[settings.idField]"
-              :value="item[settings.valueField]"
-              as="template"
-            &gt;
-              &lt;li
-                :class="[
-                  active ? 'bg-amber-100 text-amber-900' : 'text-gray-900',
-                  'relative cursor-default select-none py-2 pl-10 pr-4',
-                ]"
-              &gt;
-                &lt;span
-                  :class="[
-                    selected ? 'font-medium' : 'font-normal',
-                    'block truncate',
-                  ]"
-                &gt;{{ item[settings.nameField] }}&lt;/span&gt;
-                &lt;span
-                  v-if="selected"
-                  class="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600"
-                &gt;
-                  &lt;CheckIcon
-                    class="h-5 w-5"
-                    aria-hidden="true"
-                  /&gt;
-                &lt;/span&gt;
+        &lt;transition leave-active-class="transition duration-100 ease-in" leave-from-class="opacity-100" leave-to-class="opacity-0"&gt;
+          &lt;ListboxOptions class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"&gt;
+            &lt;ListboxOption class="listbox-items" v-for="item in items" v-slot="{ active, selected }" :key="item[settings.idField]" :value="item[settings.valueField]" as="template"&gt;
+              &lt;li :class="[
+                    active ? 'bg-amber-100 text-amber-900' : 'text-gray-900',
+                    'relative cursor-default select-none py-2 pl-10 pr-4',
+                  ]"&gt;
+                &lt;span :class="[
+                      selected ? 'font-medium' : 'font-normal',
+                      'block truncate',
+                    ]"&gt;{{ item[settings.nameField] }}&lt;/span&gt;
+                &lt;span v-if="selected" class="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600"&gt;
+                    &lt;CheckIcon
+                      class="h-5 w-5"
+                      aria-hidden="true"
+                    /&gt;
+                  &lt;/span&gt;
               &lt;/li&gt;
             &lt;/ListboxOption&gt;
           &lt;/ListboxOptions&gt;
@@ -388,68 +311,70 @@
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
-import {
-	Listbox,
-	// ListboxLabel,
-	ListboxButton,
-	ListboxOptions,
-	ListboxOption
-} from '@headlessui/vue'
-import { CheckIcon, SelectorIcon } from '@heroicons/vue/solid'
-export default {
-	components: {
-		Listbox,
-		// ListboxLabel,
-		ListboxButton,
-		ListboxOptions,
-		ListboxOption,
-		CheckIcon,
-		SelectorIcon
-	},
-	props: ['settings', 'items', 'modelValue'],
-	data () {
-		return {
-		}
-	},
-	computed: {
-		localModelValue: {
-			get () {
-				return this.modelValue
-			},
-<span class="fstat-no" title="function not covered" >			set </span>(newValue) {
-<span class="cstat-no" title="statement not covered" >				this.$</span>emit('update:modelValue', newValue)
-			}
-		}
-	},
-	methods: {
-<span class="fstat-no" title="function not covered" >		updateValue </span>(event) {
-<span class="cstat-no" title="statement not covered" >			this.$</span>emit('update:modelValue', event.target.value)
-		}
-	}
-}
+  import {
+    Listbox,
+    // ListboxLabel,
+    ListboxButton,
+    ListboxOptions,
+    ListboxOption
+  } from '@headlessui/vue'
+  import {
+    CheckIcon,
+    SelectorIcon
+  } from '@heroicons/vue/solid'
+  export default {
+    components: {
+      Listbox,
+      // ListboxLabel,
+      ListboxButton,
+      ListboxOptions,
+      ListboxOption,
+      CheckIcon,
+      SelectorIcon
+    },
+    props: ['settings', 'items', 'modelValue'],
+    data() {
+      return {}
+    },
+    computed: {
+      localModelValue: {
+        get() {
+          return this.modelValue
+        },
+<span class="fstat-no" title="function not covered" >        set(</span>newValue) {
+<span class="cstat-no" title="statement not covered" >          this.$</span>emit('update:modelValue', newValue)
+        }
+      }
+    },
+    methods: {
+<span class="fstat-no" title="function not covered" >      updateValue(</span>event) {
+<span class="cstat-no" title="statement not covered" >        this.$</span>emit('update:modelValue', event.target.value)
+      }
+    }
+  }
 &lt;/script&gt;
 &nbsp;
 &lt;script setup&gt;
-// import { ref } from 'vue'
-// import {
-//   Listbox,
-//   ListboxLabel,
-//   ListboxButton,
-//   ListboxOptions,
-//   ListboxOption
-// } from '@headlessui/vue'
-// import { CheckIcon, SelectorIcon } from '@heroicons/vue/solid'
-&nbsp;
-// const people = [
-//   { name: 'Wade Cooper' },
-//   { name: 'Arlene Mccoy' },
-//   { name: 'Devon Webb' },
-//   { name: 'Tom Cook' },
-//   { name: 'Tanya Fox' },
-//   { name: 'Hellen Schmidt' }
-// ]
-// const items = ref([people[0], people[1]])
-// &lt;/script&gt;
+  // import { ref } from 'vue'
+  // import {
+  //   Listbox,
+  //   ListboxLabel,
+  //   ListboxButton,
+  //   ListboxOptions,
+  //   ListboxOption
+  // } from '@headlessui/vue'
+  // import { CheckIcon, SelectorIcon } from '@heroicons/vue/solid'
+  // const people = [
+  //   { name: 'Wade Cooper' },
+  //   { name: 'Arlene Mccoy' },
+  //   { name: 'Devon Webb' },
+  //   { name: 'Tom Cook' },
+  //   { name: 'Tanya Fox' },
+  //   { name: 'Hellen Schmidt' }
+  // ]
+  // const items = ref([people[0], people[1]])
+  //
+&lt;/script&gt;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -457,7 +382,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-10T08:50:55.630Z
+                at 2022-08-12T10:51:09.875Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

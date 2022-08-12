@@ -50,9 +50,9 @@ test('ChapterAdd', async () => {
     })
 
     const promises = [
-        wrapper.find('input[name="chapterNumber"]').setValue('testing'),
-        wrapper.find('input[name="arPrice"]').setValue(false),
-        wrapper.find('input[name="price"]').setValue('1')
+        wrapper.find('input[name="chapterNumber"]').setValue('10'),
+        wrapper.find('input[name="arPrice"]').setValue('15'),
+        wrapper.find('input[name="price"]').setValue('12')
     ]
 
     await Promise.all(promises)
@@ -63,25 +63,30 @@ test('ChapterAdd', async () => {
     await flushPromises()
     await flushPromises()
     await flushPromises()
+
+    const item = storeMock.getState(['comics', 'comic-1', 'chapters'])
+
+    console.log(item)
+
+    const isNewChapterAdded = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].chapter_number == '10'
+        return acc
+    }, false);
+
+    const isNewArPriceAdded = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].ar_price == '15'
+        return acc
+    }, false);
+
+    const isNewpriceAdded = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].price == '12'
+        return acc
+    }, false);
+
     
-    expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-new', 'chapter_number'])).toEqual('testing')
-    expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-new', 'ar_price'])).toEqual(false)
-    expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-new', 'price'])).toEqual('1')
-
-    // const chapterNumber = wrapper.find('input[name="chapterNumber"]')
-    // await chapterNumber.setValue('some value')
-
-    // expect(wrapper.find('input[type="text"]').element.value).toBe('some value')
-
-    // const arPrice = wrapper.find('input[name="arPrice"]')
-    // await arPrice.setValue('some value')
-
-    // expect(wrapper.find('input[type="text"]').element.value).toBe('some value')
-
-    // const price = wrapper.find('input[name="price"]')
-    // await price.setValue('some value')
-
-    // expect(wrapper.find('input[type="text"]').element.value).toBe('some value')
+    expect(isNewChapterAdded).toEqual(true)
+    expect(isNewArPriceAdded).toEqual(true)
+    expect(isNewpriceAdded).toEqual(true)
 
     expect(wrapper.find('#hero-bar').text()).toContain('Add a New Chapter')
     expect(wrapper.find('#card-component-title').exists()).toBe(false)
@@ -101,6 +106,13 @@ test('ChapterAdd', async () => {
 
 test('ChapterEdit', async () => {
     window.localStorage.setItem('uid', 'test-uid')
+    options.plugins.router.push({ name: 'chapterEdit', params: { comicId: 'comic-1', chapterId: 'chapter-1' } })
+    await options.plugins.router.isReady()
+    await nextTick()
+    await nextTick()
+    await flushPromises()
+    await flushPromises()
+
     const wrapper = mount(ChapterEdit, {
         global: {
             plugins: [...Object.values(options.plugins)],
@@ -108,20 +120,9 @@ test('ChapterEdit', async () => {
         }
     })
 
-    const chapterNumber = wrapper.find('input[name="chapterNumber"]')
-    await chapterNumber.setValue('some value')
-
-    expect(wrapper.find('input[type="text"]').element.value).toBe('')
-
-    const arPrice = wrapper.find('input[name="arPrice"]')
-    await arPrice.setValue('some value')
-
-    expect(wrapper.find('input[type="text"]').element.value).toBe('')
-
-    const price = wrapper.find('input[name="price"]')
-    await price.setValue('some value')
-
-    expect(wrapper.find('input[type="text"]').element.value).toBe('')
+    expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'chapter_number'])).toEqual(1)
+    expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'ar_price'])).toEqual(null)
+    expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'price'])).toEqual(1)
 
     expect(wrapper.find('#hero-bar').text()).toContain('Edit Chapter')
     expect(wrapper.find('#card-component-title').exists()).toBe(false)

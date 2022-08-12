@@ -50,8 +50,8 @@ test('PageAdd', async () => {
 
     const promises = [
         wrapper.find('input[name="mediaType"]').setValue('image'),
-        wrapper.find('input[name="pageType"]').setValue('some value'),
-        wrapper.find('input[name="pageNumber"]').setValue('some value')
+        wrapper.find('input[name="pageType"]').setValue('false'),
+        wrapper.find('input[name="pageNumber"]').setValue('20')
     ]
 
     await Promise.all(promises)
@@ -63,24 +63,32 @@ test('PageAdd', async () => {
     await flushPromises()
     await flushPromises()
 
-    expect(storeMock.getState(['comics', 'chapters', 'pages', 'pages-new', 'media_stype'])).toEqual('testestest')
-    expect(storeMock.getState(['comics', 'chapters', 'pages', 'pages-new', 'media_type'])).toEqual('testestest')
-    expect(storeMock.getState(['comics', 'chapters', 'pages', 'pages-new', 'page_number'])).toEqual('testestest')
+    const item = storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'pages'])
 
-    // const mediaType = wrapper.find('input[name="mediaType"]')
-    // await mediaType.setValue('some value')
+    console.log(item)
 
-    // expect(wrapper.find('input[type="text"]').element.value).toBe('some value')
+    const isNewPagesMedia = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].media_type == 'image'
+        return acc
+    }, false);
 
-    // const pageType = wrapper.find('input[name="pageType"]')
-    // await pageType.setValue('some value')
+    const isNewPagesPagetype = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].is_ar == 'false'
+        return acc
+    }, false);
 
-    // expect(wrapper.find('input[type="text"]').element.value).toBe('some value')
+    const isNewPagesPageNumber = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].page_number == '20'
+        return acc
+    }, false);
 
-    // const pageNumber = wrapper.find('input[name="pageNumber"]')
-    // await pageNumber.setValue('some value')
+    expect(isNewPagesMedia).toEqual(true)
+    expect(isNewPagesPagetype).toEqual(true)
+    expect(isNewPagesPageNumber).toEqual(true)
 
-    // expect(wrapper.find('input[type="text"]').element.value).toBe('some value')
+    // expect(storeMock.getState(['comics', 'chapters', 'pages', 'pages-new', 'media_stype'])).toEqual('testestest')
+    // expect(storeMock.getState(['comics', 'chapters', 'pages', 'pages-new', 'media_type'])).toEqual('testestest')
+    // expect(storeMock.getState(['comics', 'chapters', 'pages', 'pages-new', 'page_number'])).toEqual('testestest')
 
     expect(wrapper.find('#hero-bar').text()).toContain('Add a New Page')
     expect(wrapper.find('#card-component-title').exists()).toBe(false)
@@ -99,6 +107,13 @@ test('PageAdd', async () => {
 })
 
 test('PageEdit', async () => {
+    window.localStorage.setItem('uid', 'test-uid')
+    options.plugins.router.push({ name: 'pageEdit', params: { comidId: 'comic-1', chapterId: 'chapter-1', pageId: 'page-1' } })
+    await options.plugins.router.isReady()
+    await nextTick()
+    await nextTick()
+    await flushPromises()
+    await flushPromises()
     const wrapper = mount(PageEdit, {
         global: {
             plugins: [...Object.values(options.plugins)],
@@ -106,20 +121,9 @@ test('PageEdit', async () => {
         }
     })
 
-    const mediaType = wrapper.find('input[name="mediaType"]')
-    await mediaType.setValue('some value')
-
-    expect(wrapper.find('input[type="text"]').element.value).toBe('')
-
-    const pageType = wrapper.find('input[name="pageType"]')
-    await pageType.setValue('some value')
-
-    expect(wrapper.find('input[type="text"]').element.value).toBe('')
-
-    const pageNumber = wrapper.find('input[name="pageNumber"]')
-    await pageNumber.setValue('some value')
-
-    expect(wrapper.find('input[type="text"]').element.value).toBe('')
+    expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'pages', 'page-1', 'media_type'])).toEqual('image')
+    expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'pages', 'page-1', 'is_ar'])).toEqual(null)
+    expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'pages', 'page-1', 'page_number'])).toEqual(null)
 
     expect(wrapper.find('#hero-bar').text()).toContain('Edit Page')
     expect(wrapper.find('#card-component-title').exists()).toBe(false)

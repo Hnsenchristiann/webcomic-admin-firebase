@@ -55,11 +55,16 @@ test('TagAdd', async () => {
     await flushPromises()
     await flushPromises()
 
-    const path = storeMock.getState(['tags'])
-    
-    expect(path).toEqual('image')
+    const item = storeMock.getState(['tags'])
 
-    // expect(wrapper.find('input[type="text"]').element.value).toBe('image')
+    console.log(item)
+
+    const isNewTagAdded = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].name == 'image'
+        return acc
+      }, false);
+
+    expect(isNewTagAdded).toEqual(true)
 
     expect(wrapper.find('#hero-bar').text()).toContain('Add a New Tag')
     expect(wrapper.find('#card-component-title').exists()).toBe(false)
@@ -87,11 +92,6 @@ test('TagEdit', async () => {
         }
     })
 
-    const tagEdit = wrapper.find('input[name="tagEdit"]')
-    await tagEdit.setValue('some value')
-
-    expect(wrapper.find('input[type="text"]').element.value).toBe('some value')
-
     expect(wrapper.find('#hero-bar').text()).toContain('Edit Tag')
     expect(wrapper.find('#card-component-title').exists()).toBe(false)
     expect(wrapper.find('#card-component-empty').exists()).toBe(false)
@@ -101,4 +101,5 @@ test('TagEdit', async () => {
     expect(wrapper.find('#jb-icon').exists()).toBe(true)
 
     expect(wrapper.find('#tag-card-header').text()).toContain('Tags')
+    expect(storeMock.getState(['tags', 'tag-1', 'name'])).toEqual('folk')
 })

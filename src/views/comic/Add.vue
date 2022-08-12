@@ -68,6 +68,7 @@
               Genres
             </label>
             <Listbox
+              class="comic-genre"
               v-model="comic.categories"
               :items="categories"
               :settings="{valueField: 'name', nameField: 'name', idField: 'id'}"
@@ -89,6 +90,7 @@
               Tags
             </label>
             <Listbox
+              class="comic-tag"
               v-model="comic.tags"
               :items="tags"
               :settings="{valueField: 'name', nameField: 'name', idField: 'id'}"
@@ -113,22 +115,22 @@
             id="exampleFormControlTextarea1"
             v-model="comic.description"
             class="
-                    form-control
-                    block
-                    w-full
-                    px-3
-                    py-1.5
-                    text-base
-                    font-normal
-                    text-gray-700
-                    bg-white bg-clip-padding
-                    border border-solid border-gray-300
-                    rounded
-                    transition
-                    ease-in-out
-                    m-0
-                    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-                    "
+              form-control
+              block
+              w-full
+              px-3
+              py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding
+              border border-solid border-gray-300
+              rounded
+              transition
+              ease-in-out
+              m-0
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+              "
             rows="3"
             placeholder="Please Enter Author Description"
           />
@@ -510,21 +512,21 @@ export default {
 						throw err
 					}
 				}
-				this.$toast.open({
-					message: 'Success!',
-					type: 'success',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: 'Success!',
+				// 	type: 'success',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			} catch (err) {
-				this.$toast.open({
-					message: err.toString(),
-					type: 'error',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: err.toString(),
+				// 	type: 'error',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			}
 
 			// this.comic.updateDocument(processedData)

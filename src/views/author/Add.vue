@@ -50,6 +50,7 @@
             class="form-label font-bold inline-block mb-2 text-gray-700"
           >Description</label>
           <textarea
+            name="authorDescription"
             id="exampleFormControlTextarea1"
             v-model="author.description"
             class="
@@ -208,7 +209,7 @@ export default {
 			author: {
         name: [],
         email: [],
-        description: [],
+        description: '',
         social_media_links: {
           facebook: '',
           twitter: '',
@@ -237,18 +238,18 @@ export default {
 				description: this.description,
 			}
       const socials = {}
-      if(this.social_media_links.facebook){
-        socials.facebook = this.social_media_links.facebook
-      }
-      if(this.social_media_links.twitter){
-        socials.twitter = this.social_media_links.twitter
-      }
-      if(this.social_media_links.instagram){
-        socials.instagram = this.social_media_links.instagram
-      }
-      if(!isEmpty(socials)){
-        author.social_media_links = socials
-      }
+      // if(this.social_media_links.facebook){
+      //   socials.facebook = this.social_media_links.facebook
+      // }
+      // if(this.social_media_links.twitter){
+      //   socials.twitter = this.social_media_links.twitter
+      // }
+      // if(this.social_media_links.instagram){
+      //   socials.instagram = this.social_media_links.instagram
+      // }
+      // if(!isEmpty(socials)){
+      //   author.social_media_links = socials
+      // }
       try{
         const newAuthor = await Author.createDocument(author)
         if(this.coverImageChanged){
@@ -261,29 +262,29 @@ export default {
             throw err
           }
         }
-				this.$toast.open({
-					message: 'Success!',
-					type: 'success',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: 'Success!',
+				// 	type: 'success',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
       }catch(err){
-				this.$toast.open({
-					message: err.toString(),
-					type: 'error',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: err.toString(),
+				// 	type: 'error',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
         console.error(err)
         handleError(err, 'createAuthorError')
         throw err
       }
-			const addData = await addDoc(collection(firebase.db, 'authors'), author)
-			this.imageDataUrl = await ProfilePicture.uploadField('profile_picture_url', '/profile_images' + this.ProfilePicture)
-			this.$router.push('/author')
+			const addData = await addDoc(collection(firebase.db, 'authors'), this.author)
 			console.log(addData)
+			// this.imageDataUrl = await ProfilePicture.uploadField('profile_picture_url', '/profile_images' + this.ProfilePicture)
+			this.$router.push('/author')
 		},
 		onFileChange (event) {
 			this.ProfilePicture = event.target.files[0]

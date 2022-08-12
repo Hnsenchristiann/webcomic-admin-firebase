@@ -47,8 +47,19 @@ test('GenreAdd', async () => {
     await flushPromises()
     await flushPromises()
 
+    const item = storeMock.getState(['categories'])
+
+    console.log(item)
+
+    const isNewGenreAdded = Object.keys(item).reduce((acc, key) => {
+        acc = acc || item[key].name == 'image'
+        return acc
+      }, false);
+
+    expect(isNewGenreAdded).toEqual(true)
+
     
-    expect(storeMock.getState(['categories', 'genre-new', 'name'])).toEqual(null)
+    // expect(storeMock.getState(['categories', 'genre-new', 'name'])).toEqual(null)
 
     // const genreName = wrapper.find('input[name="genreName"]')
     // await genreName.setValue('some value')
@@ -68,7 +79,7 @@ test('GenreAdd', async () => {
 
 test('GenreEdit', async () => {
     window.localStorage.setItem('uid', 'test-uid')
-    options.plugins.router.push({ name: 'genre', params: { id: 'genre-1'} })
+    options.plugins.router.push({ name: 'categories', params: { id: 'category-1'} })
     await options.plugins.router.isReady()
     await nextTick()
     await nextTick()
@@ -81,11 +92,6 @@ test('GenreEdit', async () => {
         }
     })
 
-    const genreEdit = wrapper.find('input[name="genreEdit"]')
-    await genreEdit.setValue('some value')
-
-    expect(wrapper.find('input[type="text"]').element.value).toBe('some value')
-
     expect(wrapper.find('#hero-bar').text()).toContain('Edit Genre')
     expect(wrapper.find('#card-component-title').exists()).toBe(false)
     expect(wrapper.find('#card-component-empty').exists()).toBe(false)
@@ -95,4 +101,5 @@ test('GenreEdit', async () => {
     expect(wrapper.find('#jb-icon').exists()).toBe(true)
 
     expect(wrapper.find('#tag-card-header').text()).toContain('Genre')
+    expect(storeMock.getState(['categories', 'category-1', 'name'])).toEqual('world')
 })
