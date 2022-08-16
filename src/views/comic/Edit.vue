@@ -184,7 +184,7 @@
                   d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                 />
               </svg>
-              <span id="comic-cover-capt" class="font-medium text-gray-600">
+              <span id="comic-image" class="font-medium text-gray-600">
                 Drop files to Attach, or
                 <span class="text-blue-600 underline">browse</span>
               </span>
@@ -202,9 +202,9 @@
         <div class="my-5">
           <div class="flex items-center justify-center">
             <button
-              id="comic-submit"
+              id="comic-save"
               class="bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded"
-              @click.prevent="submitData"
+              @click="submitData"
             >
               Submit
             </button>
@@ -371,21 +371,21 @@ export default {
 				}
 				const processedData = this.comic.toDataJSON(['authors', 'authors_data', 'categories', 'tags', 'title', 'description'])
 				await this.comic.updateDocument(processedData)
-				this.$toast.open({
-					message: 'Success!',
-					type: 'success',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: 'Success!',
+				// 	type: 'success',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			} catch (err) {
-				this.$toast.open({
-					message: err.toString(),
-					type: 'error',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: err.toString(),
+				// 	type: 'error',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			}
 
 			// this.comic.updateDocument(processedData)

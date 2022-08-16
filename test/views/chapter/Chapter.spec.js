@@ -31,8 +31,26 @@ test('ChapterList', async () => {
     expect(wrapper.find('#card-component-empty').exists()).toBe(false)
     expect(wrapper.find('#card-component-slot').exists()).toBe(false)
     expect(wrapper.findAll('.title-bar').map(v => v.text())).toEqual(expect.arrayContaining(["Admin", "Comic", "Chapter List"]))
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+
+    expect(wrapper.findAll('.chapter-table').map(v => v.text())).toEqual(expect.arrayContaining([]))
+    expect(wrapper.findAll('.chapter-table-id').map(v => v.text())).toEqual(expect.arrayContaining(["chapter-1", "chapter-2"]))
+    expect(wrapper.findAll('.chapter-table-chapNum').map(v => v.text())).toEqual(expect.arrayContaining(["1", "2"]))
+    expect(wrapper.findAll('.chapter-table-price').map(v => v.text())).toEqual(expect.arrayContaining(["1", "1"]))
+    expect(wrapper.findAll('.chapter-table-view').map(v => v.text())).toEqual(expect.arrayContaining(["0", "0"]))
+    // expect(wrapper.findAll('.chapter-table-date').map(v => v.text())).toEqual(expect.arrayContaining(["Senin, 15/8/2022 18.11", "Senin, 15/8/2022 18.11"]))
     expect(wrapper.find('#jb-label').text()).toBe('Dark Mode')
     expect(wrapper.find('#jb-icon').exists()).toBe(true)
+
+    expect(wrapper.find('#edit-chapter').exists()).toBe(true)
+    expect(wrapper.find('#pages-chapter').exists()).toBe(true)
 
     await wrapper.find('#add-chapter').trigger('click')
 
@@ -119,10 +137,36 @@ test('ChapterEdit', async () => {
             components: {...options.components}
         }
     })
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
 
     expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'chapter_number'])).toEqual(1)
     expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'ar_price'])).toEqual(null)
     expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'price'])).toEqual(1)
+
+    //change value
+    const promises = [
+        wrapper.find('input[name="chapterNumber"]').setValue('10'),
+        wrapper.find('input[name="arPrice"]').setValue('15'),
+        wrapper.find('input[name="price"]').setValue('12')
+    ]
+
+    await Promise.all(promises)
+
+    //click
+    await wrapper.find('#chapter-save').trigger('click')
+
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+
+    //check again
+    expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'chapter_number'])).toEqual(10)
+    expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'ar_price'])).toEqual(15)
+    expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'price'])).toEqual(12)
 
     expect(wrapper.find('#hero-bar').text()).toContain('Edit Chapter')
     expect(wrapper.find('#card-component-title').exists()).toBe(false)

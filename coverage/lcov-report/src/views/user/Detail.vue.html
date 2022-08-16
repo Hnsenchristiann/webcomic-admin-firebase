@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">8.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/12</span>
+                <span class='fraction'>1/12</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/7</span>
+                <span class='fraction'>0/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.9% </span>
+                <span class="strong">9.09% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/11</span>
+                <span class='fraction'>1/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -332,35 +332,35 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -484,36 +484,36 @@ import History from '@/firebase/users/PurchasedComic'
 import Comic from '@/firebase/comics/Comic'
 // import { getDoc } from '@firebase/firestore'
 export default {
-	data () {
-		return {
+<span class="fstat-no" title="function not covered" >	data </span>() {
+<span class="cstat-no" title="statement not covered" >		return {</span>
 			user: {},
             orders: {},
             purchased_comics: {},
             comics: {}
 		}
 	},
-	created () {
-		this.fetchUser(),
+<span class="fstat-no" title="function not covered" >	created </span>() {
+<span class="cstat-no" title="statement not covered" >		this.f</span>etchUser(),
         this.fetchOrder()
-        this.fetchHistory()
+<span class="cstat-no" title="statement not covered" >        this.f</span>etchHistory()
 	},
   components: {
     ComicBestowal
   },
 	methods: {
-		async fetchUser () {
-			this.user = await User.getDocument(this.$route.params.id)
+<span class="fstat-no" title="function not covered" >		async f</span>etchUser () {
+<span class="cstat-no" title="statement not covered" >			this.u</span>ser = await User.getDocument(this.$route.params.id)
 		},
-        async fetchOrder () {
-            this.orders = await Order.getOrders(['users', this.$route.params.id, 'orders'])
+<span class="fstat-no" title="function not covered" >        async f</span>etchOrder () {
+<span class="cstat-no" title="statement not covered" >            this.o</span>rders = await Order.getOrders(['users', this.$route.params.id, 'orders'])
         },
-        async fetchHistory () {
-            this.purchased_comics = await History.getHistories(['users', this.$route.params.id, 'purchased_comics'])
-            const comics = await Promise.all(this.purchased_comics.map(<span class="fstat-no" title="function not covered" >v </span>=&gt; <span class="cstat-no" title="statement not covered" >v.id).m</span>ap(<span class="fstat-no" title="function not covered" >(i</span>d) =&gt; {
+<span class="fstat-no" title="function not covered" >        async f</span>etchHistory () {
+<span class="cstat-no" title="statement not covered" >            this.p</span>urchased_comics = await History.getHistories(['users', this.$route.params.id, 'purchased_comics'])
+            const comics = <span class="cstat-no" title="statement not covered" >await Promise.</span>all(this.purchased_comics.map(<span class="fstat-no" title="function not covered" >v </span>=&gt; <span class="cstat-no" title="statement not covered" >v.id).m</span>ap(<span class="fstat-no" title="function not covered" >(i</span>d) =&gt; {
 <span class="cstat-no" title="statement not covered" >                return C</span>omic.getDocument(id)
             }))
-            console.log(comics)
-            this.comics = comics
+<span class="cstat-no" title="statement not covered" >            console.</span>log(comics)
+<span class="cstat-no" title="statement not covered" >            this.c</span>omics = comics
         }
 	}
 }
@@ -529,7 +529,7 @@ const titleStack = ref(['Admin', 'User', 'Detail'])
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-10T05:36:33.727Z
+                at 2022-08-16T06:22:25.526Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

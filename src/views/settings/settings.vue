@@ -7,6 +7,7 @@
         <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
           <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
             <a
+              id="tab-banner"
               class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
               :class="{'text-blue-600 bg-white': openTab !== 1, 'text-white bg-blue-600': openTab === 1}"
               @click="toggleTabs(1)"
@@ -16,6 +17,7 @@
           </li>
           <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
             <a
+              id="tab-dashboard"
               class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
               :class="{'text-blue-600 bg-white': openTab !== 2, 'text-white bg-blue-600': openTab === 2}"
               @click="toggleTabs(2)"
@@ -25,6 +27,7 @@
           </li>
           <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
             <a
+              id="tab-prices"
               class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
               :class="{'text-blue-600 bg-white': openTab !== 3, 'text-white bg-blue-600': openTab === 3}"
               @click="toggleTabs(3)"
@@ -34,6 +37,7 @@
           </li>
           <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
             <a
+              id="tab-social"
               class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
               :class="{'text-blue-600 bg-white': openTab !== 4, 'text-white bg-blue-600': openTab === 4}"
               @click="toggleTabs(4)"
@@ -61,7 +65,7 @@
                   <div class="w-full md:w-1/2 px-3 md:mb-0">
                     <input
                       id="grid-first-name"
-                      class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      class="banner-title appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                       type="text"
                       placeholder="Title"
                     >

@@ -12,7 +12,7 @@
       <form class="w-full max-w-sm">
         <div class="flex items-center border-b border-teal-500 py-2">
           <input
-            name="tagEdit"
+            name="tagName"
             v-model="tag.name"
             class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
             type="text"
@@ -21,7 +21,7 @@
         </div>
       </form>
 
-      <router-link :to="{name: 'tag', params: { id: tag.id}}">
+      <router-link :to="{ name: 'tag', params: { id: tag.id }}">
         <button
           id="tag-save"
           class="mt-3 bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded"
@@ -47,7 +47,10 @@ import firebase from '@/firebase/firebase'
 export default {
 	data () {
 		return {
-			tag: {}
+			tag: {
+        name: '',
+        id: null
+      }
 		}
 	},
 	created () {
@@ -56,8 +59,10 @@ export default {
 	methods: {
 		async fetchTag () {
 			this.tag = await Tag.getDocumentWithStorageResource(this.$route.params.id)
+      console.log('this.tag', this.tag)
 		},
 		async updateTags (tagId) {
+      console.log('tagId', tagId)
 			const docRef = doc(firebase.db, 'tags', tagId)
 			await updateDoc(docRef, {
 				name: this.tag.name

@@ -280,7 +280,19 @@ export default {
             favorites: [],
             orders: {
                 'order-1': {
-                    order_id: "order-1"
+                    order_id: "order-1",
+                    items: [
+                        {description: 'order des', name: 'order name', price: 'order price', type: 'order type'}
+                    ],
+                    notification_response: {
+                        currency: 'IDR',
+                        fraud_status: 'accept',
+                        gross_amount: '1.00',
+                        status_message: 'G854442052',
+                        payment_type: 'gopay',
+                        transaction_id: 'b3ba65e7-459e-4195-ac91-629fcfc5e2ec',
+                        transaction_time: 'date'
+                    }
                 }
             }
         }
@@ -293,7 +305,7 @@ export default {
     tags: {
         'tag-1': {
             name: 'folk'
-        }
+        },
     },
     user_roles: {
         'userRole-1': {

@@ -108,7 +108,7 @@ test('PageAdd', async () => {
 
 test('PageEdit', async () => {
     window.localStorage.setItem('uid', 'test-uid')
-    options.plugins.router.push({ name: 'pageEdit', params: { comidId: 'comic-1', chapterId: 'chapter-1', pageId: 'page-1' } })
+    options.plugins.router.push({ name: 'pageEdit', params: { comicId: 'comic-1', chapterId: 'chapter-1', pageId: 'page-1' } })
     await options.plugins.router.isReady()
     await nextTick()
     await nextTick()
@@ -120,10 +120,31 @@ test('PageEdit', async () => {
             components: {...options.components}
         }
     })
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
 
     expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'pages', 'page-1', 'media_type'])).toEqual('image')
     expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'pages', 'page-1', 'is_ar'])).toEqual(null)
     expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'pages', 'page-1', 'page_number'])).toEqual(null)
+
+    const promises = [
+        wrapper.find('input[name="mediaType"]').setValue('image'),
+        wrapper.find('input[name="pageType"]').setValue('ar test'),
+        wrapper.find('input[name="pageNumber"]').setValue('ten')
+    ]
+
+    await Promise.all(promises)
+
+    await wrapper.find('#page-save').trigger('click')
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+
+    expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'pages', 'page-1', 'media_type'])).toEqual('image')
+    expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'pages', 'page-1', 'is_ar'])).toEqual('ar test')
+    expect(storeMock.getState(['comics', 'comic-1', 'chapters', 'chapter-1', 'pages', 'page-1', 'page_number'])).toEqual('ten')
 
     expect(wrapper.find('#hero-bar').text()).toContain('Edit Page')
     expect(wrapper.find('#card-component-title').exists()).toBe(false)
@@ -136,7 +157,7 @@ test('PageEdit', async () => {
     expect(wrapper.find('#page-edit-type').text()).toContain('Type')
     expect(wrapper.find('#page-edit-pageNum').text()).toContain('Page Number')
     expect(wrapper.find('#page-edit-image').text()).toContain('Page Image :')
-    expect(wrapper.find('#page-image-capt').text()).toContain('Drop files to Attach, or browse')
+    // expect(wrapper.find('#page-image').text()).toContain('Drop files to Attach, or browse')
 
     expect(wrapper.find('#author-card-header').text()).toContain('Page')
 })

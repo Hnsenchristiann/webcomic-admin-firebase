@@ -103,7 +103,7 @@
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   />
                 </svg>
-                <span id="page-image-capt" class="font-medium text-gray-600">
+                <span id="page-image" class="font-medium text-gray-600">
                   Drop files to Attach, or
                   <span class="text-blue-600 underline">browse</span>
                 </span>
@@ -119,8 +119,9 @@
           </div>
 
           <button
+            id="page-save"
             class="mt-5 bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded"
-            @click.prevent="submitData"
+            @click="submitData"
           >
             Save
           </button>
@@ -187,21 +188,21 @@ export default {
 				}
         const processedData = this.page.toDataJSON(['is_ar', 'media_type', 'page_number'])
 				await this.page.updateDocument(processedData)
-				this.$toast.open({
-					message: 'Success!',
-					type: 'success',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: 'Success!',
+				// 	type: 'success',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			} catch (err) {
-				this.$toast.open({
-					message: err.toString(),
-					type: 'error',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: err.toString(),
+				// 	type: 'error',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			}
 			this.$router.back()
 		}

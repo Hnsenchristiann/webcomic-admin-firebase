@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">24% </span>
+                <span class="strong">56.52% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/25</span>
+                <span class='fraction'>13/23</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/6</span>
+                <span class='fraction'>5/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">24% </span>
+                <span class="strong">56.52% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/25</span>
+                <span class='fraction'>13/23</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -455,35 +455,25 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -492,7 +482,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -627,7 +627,7 @@
           &lt;button
             id="chapter-save"
             class="mt-5 bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded"
-            @click.prevent="submitData"
+            @click="submitData"
           &gt;
             Save
           &lt;/button&gt;
@@ -673,15 +673,15 @@ export default {
         async fetchChapter () {
 			this.chapter = await Chapter.getDocument(['comics', this.$route.params.comicId, 'chapters'], this.$route.params.chapterId)
 			if (this.chapter.chapter_preview_url) {
-				this.chapter.chapter_preview_url = await utils.getDataUrlFromStorage(this.chapter.chapter_preview_url).then(<span class="fstat-no" title="function not covered" >(c</span>over) =&gt; {
-<span class="cstat-no" title="statement not covered" >					this.c</span>overLoaded = true
-<span class="cstat-no" title="statement not covered" >					return c</span>over
+				this.chapter.chapter_preview_url = await utils.getDataUrlFromStorage(this.chapter.chapter_preview_url).then((cover) =&gt; {
+					this.coverLoaded = true
+					return cover
 				})
 			}
 		},
-<span class="fstat-no" title="function not covered" >		async s</span>ubmitData () {
-<span class="cstat-no" title="statement not covered" >			try {</span>
-<span class="cstat-no" title="statement not covered" >				<span class="missing-if-branch" title="if path not taken" >I</span>if (this.coverImageChanged) {</span>
+		async submitData () {
+			try {
+				<span class="missing-if-branch" title="if path not taken" >I</span>if (this.coverImageChanged) {
 <span class="cstat-no" title="statement not covered" >					try {</span>
 <span class="cstat-no" title="statement not covered" >						console.</span>log('asdfasdf')
 <span class="cstat-no" title="statement not covered" >						await t</span>his.chapter.adminUploadField('chapter_preview_url', 'previews/' + this.chapter.id, this.coverImage)
@@ -692,26 +692,26 @@ export default {
 <span class="cstat-no" title="statement not covered" >						throw e</span>rr
 					}
 				}
-                const processedData = <span class="cstat-no" title="statement not covered" >this.c</span>hapter.toDataJSON(['chapter_number', 'ar_price', 'price'])
+                const processedData = this.chapter.toDataJSON(['chapter_number', 'ar_price', 'price'])
 <span class="cstat-no" title="statement not covered" >				await t</span>his.chapter.updateDocument(processedData)
-<span class="cstat-no" title="statement not covered" >				this.$</span>toast.open({
-					message: 'Success!',
-					type: 'success',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: 'Success!',
+				// 	type: 'success',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			} catch (err) {
-<span class="cstat-no" title="statement not covered" >				console.</span>error(err)
-<span class="cstat-no" title="statement not covered" >				this.$</span>toast.open({
-					message: err.toString(),
-					type: 'error',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				console.error(err)
+				// this.$toast.open({
+				// 	message: err.toString(),
+				// 	type: 'error',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			}
-<span class="cstat-no" title="statement not covered" >			this.$</span>router.back()
+			this.$router.back()
 		}
 	}
 }
@@ -727,7 +727,7 @@ const titleStack = ref(['Admin', 'Chapter', 'Edit'])
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-12T06:56:50.054Z
+                at 2022-08-16T08:34:10.668Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

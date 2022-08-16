@@ -15,14 +15,30 @@ test('GenreList', async () => {
         }
     })
 
+    const testingId = "category-1"
+    const testingName = "World"
+
     expect(wrapper.find('#hero-bar').text()).toContain('Genre List')
     expect(wrapper.find('#card-component-title').exists()).toBe(true)
     expect(wrapper.find('#card-component-title').text()).toBe('Genres List')
     expect(wrapper.find('#card-component-empty').exists()).toBe(false)
     expect(wrapper.find('#card-component-slot').exists()).toBe(false)
     expect(wrapper.findAll('.title-bar').map(v => v.text())).toEqual(expect.arrayContaining(["Admin", "Genre List"]))
+    // expect(wrapper.findAll('.genre-table').map(v => v.text())).toEqual(expect.arrayContaining([]))
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+    expect(wrapper.find('.genre-table-id').text()).toBe(testingId)
+    expect(wrapper.find('.genre-table-name').text()).toBe(testingName)
     expect(wrapper.find('#jb-label').text()).toBe('Dark Mode')
     expect(wrapper.find('#jb-icon').exists()).toBe(true)
+    expect(wrapper.find('#edit-genre-button').exists()).toBe(true)
+    expect(wrapper.find('#delete-genre-button').exists()).toBe(true)
 })
 
 test('GenreAdd', async () => {
@@ -79,7 +95,7 @@ test('GenreAdd', async () => {
 
 test('GenreEdit', async () => {
     window.localStorage.setItem('uid', 'test-uid')
-    options.plugins.router.push({ name: 'categories', params: { id: 'category-1'} })
+    options.plugins.router.push({ name: 'genreEdit', params: { id: 'category-1'} })
     await options.plugins.router.isReady()
     await nextTick()
     await nextTick()
@@ -91,6 +107,9 @@ test('GenreEdit', async () => {
             components: {...options.components}
         }
     })
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
 
     expect(wrapper.find('#hero-bar').text()).toContain('Edit Genre')
     expect(wrapper.find('#card-component-title').exists()).toBe(false)
@@ -101,5 +120,19 @@ test('GenreEdit', async () => {
     expect(wrapper.find('#jb-icon').exists()).toBe(true)
 
     expect(wrapper.find('#tag-card-header').text()).toContain('Genre')
-    expect(storeMock.getState(['categories', 'category-1', 'name'])).toEqual('world')
+    expect(storeMock.getState(['categories', 'category-1', 'name'])).toEqual('World')
+
+    const promises = [
+        wrapper.find('input[name="genreEdit"]').setValue('worlds'),
+    ]
+
+    await Promise.all(promises)
+
+    await wrapper.find('#genre-save').trigger('click')
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+
+    expect(storeMock.getState(['categories', 'category-1', 'name'])).toEqual('worlds')
 })

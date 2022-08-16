@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/8</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/8</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -137,7 +137,12 @@
 <a name='L72'></a><a href='#L72'>72</a>
 <a name='L73'></a><a href='#L73'>73</a>
 <a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -190,19 +195,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -225,7 +235,7 @@
       &lt;form class="w-full max-w-sm"&gt;
         &lt;div class="flex items-center border-b border-teal-500 py-2"&gt;
           &lt;input
-            name="tagEdit"
+            name="tagName"
             v-model="tag.name"
             class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
             type="text"
@@ -234,7 +244,7 @@
         &lt;/div&gt;
       &lt;/form&gt;
 &nbsp;
-      &lt;router-link :to="{name: 'tag', params: { id: tag.id}}"&gt;
+      &lt;router-link :to="{ name: 'tag', params: { id: tag.id }}"&gt;
         &lt;button
           id="tag-save"
           class="mt-3 bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded"
@@ -260,7 +270,10 @@ import firebase from '@/firebase/firebase'
 export default {
 	data () {
 		return {
-			tag: {}
+			tag: {
+        name: '',
+        id: null
+      }
 		}
 	},
 	created () {
@@ -269,14 +282,16 @@ export default {
 	methods: {
 		async fetchTag () {
 			this.tag = await Tag.getDocumentWithStorageResource(this.$route.params.id)
+      console.log('this.tag', this.tag)
 		},
-<span class="fstat-no" title="function not covered" >		async u</span>pdateTags (tagId) {
-			const docRef = <span class="cstat-no" title="statement not covered" >doc(f</span>irebase.db, 'tags', tagId)
-<span class="cstat-no" title="statement not covered" >			await u</span>pdateDoc(docRef, {
+		async updateTags (tagId) {
+      console.log('tagId', tagId)
+			const docRef = doc(firebase.db, 'tags', tagId)
+			await updateDoc(docRef, {
 				name: this.tag.name
 			})
-<span class="cstat-no" title="statement not covered" >			console.</span>log(docRef)
-<span class="cstat-no" title="statement not covered" >			this.$</span>router.push('/tag')
+			console.log(docRef)
+			this.$router.push('/tag')
 		}
 	}
 }
@@ -292,7 +307,7 @@ const titleStack = ref(['Admin', 'Tag', 'Edit'])
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-12T06:42:14.701Z
+                at 2022-08-16T10:42:58.981Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

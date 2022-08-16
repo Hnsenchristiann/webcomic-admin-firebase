@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28% </span>
+                <span class="strong">41.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>14/50</span>
+                <span class='fraction'>20/48</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.85% </span>
+                <span class="strong">57.14% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/14</span>
+                <span class='fraction'>8/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.57% </span>
+                <span class="strong">42.55% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>14/49</span>
+                <span class='fraction'>20/47</span>
             </div>
         
             
@@ -842,8 +842,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -854,27 +854,27 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1109,7 +1109,7 @@
                   d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                 /&gt;
               &lt;/svg&gt;
-              &lt;span id="comic-cover-capt" class="font-medium text-gray-600"&gt;
+              &lt;span id="comic-image" class="font-medium text-gray-600"&gt;
                 Drop files to Attach, or
                 &lt;span class="text-blue-600 underline"&gt;browse&lt;/span&gt;
               &lt;/span&gt;
@@ -1127,9 +1127,9 @@
         &lt;div class="my-5"&gt;
           &lt;div class="flex items-center justify-center"&gt;
             &lt;button
-              id="comic-submit"
+              id="comic-save"
               class="bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded"
-              @click.prevent="submitData"
+              @click="submitData"
             &gt;
               Submit
             &lt;/button&gt;
@@ -1271,9 +1271,9 @@ export default {
 		async fetchComic () {
 			this.comic = await Comic.getDocument(this.$route.params.id)
 			if (this.comic.cover_image_url) {
-				this.comic.cover_image_url = await utils.getDataUrlFromStorage(this.comic.cover_image_url).then(<span class="fstat-no" title="function not covered" >(c</span>over) =&gt; {
-<span class="cstat-no" title="statement not covered" >					this.c</span>overLoaded = true
-<span class="cstat-no" title="statement not covered" >					return c</span>over
+				this.comic.cover_image_url = await utils.getDataUrlFromStorage(this.comic.cover_image_url).then((cover) =&gt; {
+					this.coverLoaded = true
+					return cover
 				})
 			}
 		},
@@ -1283,9 +1283,9 @@ export default {
 		async fetchCategories () {
 			this.categories = await Category.getDocuments()
 		},
-<span class="fstat-no" title="function not covered" >		async s</span>ubmitData () {
-<span class="cstat-no" title="statement not covered" >			try {</span>
-<span class="cstat-no" title="statement not covered" >				<span class="missing-if-branch" title="if path not taken" >I</span>if (this.coverImageChanged) {</span>
+		async submitData () {
+			try {
+				<span class="missing-if-branch" title="if path not taken" >I</span>if (this.coverImageChanged) {
 <span class="cstat-no" title="statement not covered" >					try {</span>
 <span class="cstat-no" title="statement not covered" >						await t</span>his.comic.adminUploadField('cover_image_url', 'covers/' + this.comic.id, this.coverImage)
 					} catch (err) {
@@ -1294,23 +1294,23 @@ export default {
 <span class="cstat-no" title="statement not covered" >						throw e</span>rr
 					}
 				}
-				const processedData = <span class="cstat-no" title="statement not covered" >this.c</span>omic.toDataJSON(['authors', 'authors_data', 'categories', 'tags', 'title', 'description'])
-<span class="cstat-no" title="statement not covered" >				await t</span>his.comic.updateDocument(processedData)
-<span class="cstat-no" title="statement not covered" >				this.$</span>toast.open({
-					message: 'Success!',
-					type: 'success',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				const processedData = this.comic.toDataJSON(['authors', 'authors_data', 'categories', 'tags', 'title', 'description'])
+				await this.comic.updateDocument(processedData)
+				// this.$toast.open({
+				// 	message: 'Success!',
+				// 	type: 'success',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			} catch (err) {
-<span class="cstat-no" title="statement not covered" >				this.$</span>toast.open({
-					message: err.toString(),
-					type: 'error',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: err.toString(),
+				// 	type: 'error',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			}
 &nbsp;
 			// this.comic.updateDocument(processedData)
@@ -1360,7 +1360,7 @@ const titleStack = ref(['Admin', 'Comic', 'Edit'])
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-12T10:51:09.875Z
+                at 2022-08-16T11:11:58.137Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

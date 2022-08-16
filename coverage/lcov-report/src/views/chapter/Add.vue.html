@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.09% </span>
+                <span class="strong">4.76% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/21</span>
+                <span class='fraction'>1/21</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.09% </span>
+                <span class="strong">4.76% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/21</span>
+                <span class='fraction'>1/21</span>
             </div>
         
             
@@ -441,7 +441,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -469,29 +469,29 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -512,7 +512,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -669,8 +669,8 @@ import Chapter from '@/firebase/comics/Chapter.js'
 import handleError from '@/utils/handleError.js'
 // import { getStorage, ref } from "firebase/storage"
 export default {
-	data () {
-		return {
+<span class="fstat-no" title="function not covered" >	data </span>() {
+<span class="cstat-no" title="statement not covered" >		return {</span>
 			chapter: {
 				chapter_number: [],
 				ar_price: [],
@@ -697,11 +697,11 @@ export default {
 <span class="cstat-no" title="statement not covered" >			this.i</span>mageDataUrl = URL.createObjectURL(this.coverImage)
 <span class="cstat-no" title="statement not covered" >			this.c</span>overImageChanged = true
 		},
-		async submitData () {
-			try {
+<span class="fstat-no" title="function not covered" >		async s</span>ubmitData () {
+<span class="cstat-no" title="statement not covered" >			try {</span>
 				// eslint-disable-next-line camelcase
-				const { ar_price, chapter_number, price } = this.chapter
-				const newChapter = await Chapter.createDocument(
+				const { ar_price, chapter_number, price } = <span class="cstat-no" title="statement not covered" >this.chapter</span>
+				const newChapter = <span class="cstat-no" title="statement not covered" >await C</span>hapter.createDocument(
 					this.$route.params.comicId,
 					['comics', this.$route.params.comicId],
 					{
@@ -712,8 +712,8 @@ export default {
 						view_count: 0
 					}
 				)
-				console.log(newChapter)
-				<span class="missing-if-branch" title="if path not taken" >I</span>if (this.coverImageChanged) {
+<span class="cstat-no" title="statement not covered" >				console.</span>log(newChapter)
+<span class="cstat-no" title="statement not covered" >				<span class="missing-if-branch" title="if path not taken" >I</span>if (this.coverImageChanged) {</span>
 <span class="cstat-no" title="statement not covered" >					try {</span>
 <span class="cstat-no" title="statement not covered" >						console.</span>log('asdfasdf')
 <span class="cstat-no" title="statement not covered" >						await n</span>ewChapter.adminUploadField('chapter_preview_url', 'previews/' + newChapter.id, this.coverImage)
@@ -741,7 +741,7 @@ export default {
 				// 	position: 'bottom'
 				// })
 			}
-			this.$router.back()
+<span class="cstat-no" title="statement not covered" >			this.$</span>router.back()
 		}
 	}
 }
@@ -757,7 +757,7 @@ const titleStack = ref(['Admin', 'Chapter', 'Add'])
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-12T06:56:50.054Z
+                at 2022-08-16T08:34:10.668Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

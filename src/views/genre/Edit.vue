@@ -23,6 +23,7 @@
 
       <router-link :to="{name: 'genre', params: { id: genre.id}}">
         <button
+          id="genre-save"
           class="mt-3 bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded"
           @click="updateGenres(genre.id)"
         >

@@ -181,15 +181,7 @@
 <a name='L116'></a><a href='#L116'>116</a>
 <a name='L117'></a><a href='#L117'>117</a>
 <a name='L118'></a><a href='#L118'>118</a>
-<a name='L119'></a><a href='#L119'>119</a>
-<a name='L120'></a><a href='#L120'>120</a>
-<a name='L121'></a><a href='#L121'>121</a>
-<a name='L122'></a><a href='#L122'>122</a>
-<a name='L123'></a><a href='#L123'>123</a>
-<a name='L124'></a><a href='#L124'>124</a>
-<a name='L125'></a><a href='#L125'>125</a>
-<a name='L126'></a><a href='#L126'>126</a>
-<a name='L127'></a><a href='#L127'>127</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L119'></a><a href='#L119'>119</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -288,14 +280,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -330,13 +314,13 @@
     &lt;/div&gt;
 &nbsp;
     &lt;table&gt;
-      &lt;thead class="order-table"&gt;
+      &lt;thead&gt;
         &lt;tr&gt;
           &lt;th v-if="checkable" /&gt;
-          &lt;th&gt;Order item&lt;/th&gt;
-          &lt;th&gt;Description&lt;/th&gt;
-          &lt;th&gt;Price&lt;/th&gt;
-          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th class="order-table-item"&gt;Order item&lt;/th&gt;
+          &lt;th class="order-table-description"&gt;Description&lt;/th&gt;
+          &lt;th class="order-table-price"&gt;Price&lt;/th&gt;
+          &lt;th class="order-table-type"&gt;Type&lt;/th&gt;
           &lt;th /&gt;
         &lt;/tr&gt;
       &lt;/thead&gt;
@@ -349,17 +333,17 @@
           &lt;checkbox-cell
             v-if="checkable"
             @checked="checked($event, user)"
-          /&gt;
-          &lt;td data-label="Id"&gt;
+          /&gt; 
+          &lt;td class="order-item-name" data-label="Id"&gt;
             {{ item.name }}
           &lt;/td&gt;
-          &lt;td data-label="Id"&gt;
+          &lt;td class="order-item-description" data-label="Id"&gt;
             {{ item.description }}
           &lt;/td&gt;
-          &lt;td data-label="Id"&gt;
+          &lt;td class="order-item-price" data-label="Id"&gt;
             {{ item.price }}
           &lt;/td&gt;
-          &lt;td data-label="Id"&gt;
+          &lt;td class="order-item-type" data-label="Id"&gt;
             {{ item.type }}
           &lt;/td&gt;
         &lt;/tr&gt;
@@ -371,34 +355,34 @@
     &lt;/div&gt;
 &nbsp;
     &lt;table&gt;
-      &lt;thead class="font-bold"&gt;
+      &lt;thead&gt;
         &lt;tr&gt;
           &lt;th id="order-currency"&gt;Currency : &lt;/th&gt;
-          &lt;!-- &lt;td&gt;{{ orders.notification_response.currency }}&lt;/td&gt; --&gt;
+          &lt;td class="order-item-currency"&gt;{{ orders.notification_response.currency }}&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;th id="order-fraud"&gt;Fraud Status :&lt;/th&gt;
-          &lt;!-- &lt;td&gt;{{ orders.notification_response.fraud_status }}&lt;/td&gt; --&gt;
+          &lt;td class="order-item-fraud"&gt;{{ orders.notification_response.fraud_status }}&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;th id="order-gross"&gt;Gross Amount :&lt;/th&gt;
-          &lt;!-- &lt;td&gt;{{ orders.notification_response.gross_amount }}&lt;/td&gt; --&gt;
+          &lt;td class="order-item-gross"&gt;{{ orders.notification_response.gross_amount }}&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;th id="order-status"&gt;Status Message :&lt;/th&gt;
-          &lt;!-- &lt;td&gt;{{ orders.notification_response.status_message }}&lt;/td&gt; --&gt;
+          &lt;td class="order-item-status"&gt;{{ orders.notification_response.status_message }}&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;th id="order-payment"&gt;Payment Type :&lt;/th&gt;
-          &lt;!-- &lt;td&gt;{{ orders.notification_response.payment_type }}&lt;/td&gt; --&gt;
+          &lt;td class="order-item-payment"&gt;{{ orders.notification_response.payment_type }}&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;th id="order-transaction-id"&gt;Transaction Id :&lt;/th&gt;
-          &lt;!-- &lt;td&gt;{{ orders.notification_response.transaction_id }}&lt;/td&gt; --&gt;
+          &lt;td class="order-item-transactionId"&gt;{{ orders.notification_response.transaction_id }}&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;th id="order-transaction-time"&gt;Transaction Time :&lt;/th&gt;
-          &lt;!-- &lt;td&gt;{{ orders.notification_response.transaction_time }}&lt;/td&gt; --&gt;
+          &lt;td class="order-item-transactionTime"&gt;{{ orders.notification_response.transaction_time }}&lt;/td&gt;
         &lt;/tr&gt;
       &lt;/thead&gt;
     &lt;/table&gt;
@@ -415,15 +399,7 @@ export default {
 	data () {
 		return {
       orders: {
-          notification_response: {
-            currency: '',
-            fraud_status: '',
-            gross_amount: '',
-            status_message: '',
-            payment_type: '',
-            transaction_id: '',
-            transaction_time: ''
-          }
+          notification_response: {}
       }
 		}
 	},
@@ -448,7 +424,7 @@ const titleStack = ref(['Admin', 'User', 'Detail'])
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-09T18:32:41.857Z
+                at 2022-08-16T07:11:40.465Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

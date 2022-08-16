@@ -177,8 +177,9 @@
           </div>
 
           <button
+            id="author-save"
             class="mt-5 bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded"
-            @click.prevent="submitData"
+            @click="submitData"
           >
             Save
           </button>
@@ -253,21 +254,21 @@ export default {
 				}
         const processedData = this.author.toDataJSON(['name', 'email', 'description', 'social_media_links'])
 				await this.author.updateDocument(processedData)
-				this.$toast.open({
-					message: 'Success!',
-					type: 'success',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: 'Success!',
+				// 	type: 'success',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			} catch (err) {
-				this.$toast.open({
-					message: err.toString(),
-					type: 'error',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: err.toString(),
+				// 	type: 'error',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			}
 			this.$router.back()
 		}

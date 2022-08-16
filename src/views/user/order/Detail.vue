@@ -13,13 +13,13 @@
     </div>
 
     <table>
-      <thead class="order-table">
+      <thead>
         <tr>
           <th v-if="checkable" />
-          <th>Order item</th>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Type</th>
+          <th class="order-table-item">Order item</th>
+          <th class="order-table-description">Description</th>
+          <th class="order-table-price">Price</th>
+          <th class="order-table-type">Type</th>
           <th />
         </tr>
       </thead>
@@ -32,17 +32,17 @@
           <checkbox-cell
             v-if="checkable"
             @checked="checked($event, user)"
-          />
-          <td data-label="Id">
+          /> 
+          <td class="order-item-name" data-label="Id">
             {{ item.name }}
           </td>
-          <td data-label="Id">
+          <td class="order-item-description" data-label="Id">
             {{ item.description }}
           </td>
-          <td data-label="Id">
+          <td class="order-item-price" data-label="Id">
             {{ item.price }}
           </td>
-          <td data-label="Id">
+          <td class="order-item-type" data-label="Id">
             {{ item.type }}
           </td>
         </tr>
@@ -57,31 +57,31 @@
       <thead>
         <tr>
           <th id="order-currency">Currency : </th>
-          <!-- <td id="order-item-currency">{{ orders.notification_response.currency }}</td> -->
+          <td class="order-item-currency">{{ orders.notification_response.currency }}</td>
         </tr>
         <tr>
           <th id="order-fraud">Fraud Status :</th>
-          <!-- <td>{{ orders.notification_response.fraud_status }}</td> -->
+          <td class="order-item-fraud">{{ orders.notification_response.fraud_status }}</td>
         </tr>
         <tr>
           <th id="order-gross">Gross Amount :</th>
-          <!-- <td>{{ orders.notification_response.gross_amount }}</td> -->
+          <td class="order-item-gross">{{ orders.notification_response.gross_amount }}</td>
         </tr>
         <tr>
           <th id="order-status">Status Message :</th>
-          <!-- <td>{{ orders.notification_response.status_message }}</td> -->
+          <td class="order-item-status">{{ orders.notification_response.status_message }}</td>
         </tr>
         <tr>
           <th id="order-payment">Payment Type :</th>
-          <!-- <td>{{ orders.notification_response.payment_type }}</td> -->
+          <td class="order-item-payment">{{ orders.notification_response.payment_type }}</td>
         </tr>
         <tr>
           <th id="order-transaction-id">Transaction Id :</th>
-          <!-- <td>{{ orders.notification_response.transaction_id }}</td> -->
+          <td class="order-item-transactionId">{{ orders.notification_response.transaction_id }}</td>
         </tr>
         <tr>
           <th id="order-transaction-time">Transaction Time :</th>
-          <!-- <td>{{ orders.notification_response.transaction_time }}</td> -->
+          <td class="order-item-transactionTime">{{ orders.notification_response.transaction_time }}</td>
         </tr>
       </thead>
     </table>
@@ -98,15 +98,7 @@ export default {
 	data () {
 		return {
       orders: {
-          notification_response: {
-            currency: '',
-            fraud_status: '',
-            gross_amount: '',
-            status_message: '',
-            payment_type: '',
-            transaction_id: '',
-            transaction_time: ''
-          }
+          notification_response: {}
       }
 		}
 	},

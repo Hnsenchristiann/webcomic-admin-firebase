@@ -28,7 +28,17 @@ test('UserList', async () => {
     expect(wrapper.find('#user-email').text()).toBe('Email')
     expect(wrapper.find('#user-password').text()).toBe('Password')
     expect(wrapper.find('#user-confirm').text()).toBe('Confirm Password')
-    expect(wrapper.findAll('.user-table').map(v => v.text())).toEqual(expect.arrayContaining(["IdNameEmail Actions"]))
+    expect(wrapper.find('#user-id').text()).toBe('Id')
+    expect(wrapper.find('#user-name').text()).toBe('Name')
+    expect(wrapper.find('#user-email').text()).toBe('Email')
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+    await flushPromises()
+
+    expect(wrapper.findAll('.user-item-id').map(v => v.text())).toEqual(expect.arrayContaining(["user-1"]))
+    expect(wrapper.findAll('.user-item-name').map(v => v.text())).toEqual(expect.arrayContaining(["ppramesii"]))
+    expect(wrapper.findAll('.user-item-email').map(v => v.text())).toEqual(expect.arrayContaining(["ppramesi@visi8.com"]))
 })
 
 test('UserDetail', async () => {

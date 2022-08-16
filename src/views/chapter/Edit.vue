@@ -124,7 +124,7 @@
           <button
             id="chapter-save"
             class="mt-5 bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded"
-            @click.prevent="submitData"
+            @click="submitData"
           >
             Save
           </button>
@@ -191,22 +191,22 @@ export default {
 				}
                 const processedData = this.chapter.toDataJSON(['chapter_number', 'ar_price', 'price'])
 				await this.chapter.updateDocument(processedData)
-				this.$toast.open({
-					message: 'Success!',
-					type: 'success',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: 'Success!',
+				// 	type: 'success',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			} catch (err) {
 				console.error(err)
-				this.$toast.open({
-					message: err.toString(),
-					type: 'error',
-					duration: 5000,
-					dismissible: true,
-					position: 'bottom'
-				})
+				// this.$toast.open({
+				// 	message: err.toString(),
+				// 	type: 'error',
+				// 	duration: 5000,
+				// 	dismissible: true,
+				// 	position: 'bottom'
+				// })
 			}
 			this.$router.back()
 		}

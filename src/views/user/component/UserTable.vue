@@ -45,12 +45,12 @@
   </div>
 
   <table>
-    <thead class="user-table">
+    <thead>
       <tr>
         <th v-if="checkable" />
-        <th>Id</th>
-        <th>Name</th>
-        <th>Email</th>
+        <th id="user-id">Id</th>
+        <th id="user-name">Name</th>
+        <th id="user-email">Email</th>
         <th class="flex justify-center">
           Actions
         </th>
@@ -67,13 +67,13 @@
           v-if="checkable"
           @checked="checked($event, user)"
         />
-        <td data-label="Id">
+        <td class="user-item-id" data-label="Id">
           {{ user.id }}
         </td>
-        <td data-label="Name">
+        <td class="user-item-name" data-label="Name">
           {{ user.name }}
         </td>
-        <td data-label="Email">
+        <td class="user-item-email" data-label="Email">
           {{ user.email }}
         </td>
         <td class="actions-cell">

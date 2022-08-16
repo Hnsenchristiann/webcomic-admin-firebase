@@ -28,16 +28,16 @@
           v-if="checkable"
           @checked="checked($event, comic)"
         />
-        <td data-label="Id">
+        <td class="page-table-id" data-label="Id">
           {{ item.id }}
         </td>
-        <td data-label="Title">
+        <td class="page-table-chapNum" data-label="Title">
           {{ item.page_number }}
         </td>
-        <td data-label="Author">
+        <td class="page-table-ar" data-label="Author">
           {{ item.is_ar }}
         </td>
-        <td data-label="Genre">
+        <td class="page-table-media" data-label="Genre">
           {{ item.media_type }}
         </td>
         <td class="actions-cell">
@@ -105,55 +105,36 @@ export default {
 defineProps({
 	checkable: Boolean
 })
-
 const mainStore = useMainStore()
-
 const lightBorderStyle = computed(() => mainStore.lightBorderStyle)
-
 const tableTrStyle = computed(() => mainStore.tableTrStyle)
-
 const tableTrOddStyle = computed(() => mainStore.tableTrOddStyle)
-
 const darkMode = computed(() => mainStore.darkMode)
-
 const items = computed(() => mainStore.comic)
-
 const perPage = ref(10)
-
 const currentPage = ref(0)
-
 const checkedRows = ref([])
-
 // const itemsPaginated = computed(
 //   () => comics.value.slice(perPage.value * currentPage.value, perPage.value * (currentPage.value + 1))
 // )
-
 const numPages = computed(() => Math.ceil(items.value.length / perPage.value))
-
 const currentPageHuman = computed(() => currentPage.value + 1)
-
 const pagesList = computed(() => {
 	const pagesList = []
-
 	for (let i = 0; i < numPages.value; i++) {
 		pagesList.push(i)
 	}
-
 	return pagesList
 })
-
 const remove = (arr, cb) => {
 	const newArr = []
-
 	arr.forEach(item => {
 		if (!cb(item)) {
 			newArr.push(item)
 		}
 	})
-
 	return newArr
 }
-
 const checked = (isChecked, comic) => {
 	if (isChecked) {
 		checkedRows.value.push(comic)

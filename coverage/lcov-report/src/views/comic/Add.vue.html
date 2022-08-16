@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">2.27% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/44</span>
+                <span class='fraction'>1/44</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.66% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/12</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25.58% </span>
+                <span class="strong">2.32% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/43</span>
+                <span class='fraction'>1/43</span>
             </div>
         
             
@@ -1076,7 +1076,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1113,8 +1113,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1127,18 +1127,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1646,8 +1646,8 @@ export default {
 		// ComboboxOptions,
 		// ComboboxOption
 	},
-	data () {
-		return {
+<span class="fstat-no" title="function not covered" >	data </span>() {
+<span class="cstat-no" title="statement not covered" >		return {</span>
 			// social_media: [{
 			//   name: '',
 			//   link: ''
@@ -1682,10 +1682,10 @@ export default {
 			}
 		}
 	},
-	created () {
+<span class="fstat-no" title="function not covered" >	created </span>() {
 		// this.fetchComic()
-		this.fetchTags()
-		this.fetchCategories()
+<span class="cstat-no" title="statement not covered" >		this.f</span>etchTags()
+<span class="cstat-no" title="statement not covered" >		this.f</span>etchCategories()
 	},
 	methods: {
 <span class="fstat-no" title="function not covered" >		onFileChange </span>(event) {
@@ -1697,19 +1697,19 @@ export default {
 		//   this.comic = new Comic()
 		//   this.comic.setEmpty()
 		// },
-		async fetchTags () {
-			this.tags = await Tag.getDocuments()
+<span class="fstat-no" title="function not covered" >		async f</span>etchTags () {
+<span class="cstat-no" title="statement not covered" >			this.t</span>ags = await Tag.getDocuments()
 		},
-		async fetchCategories () {
-			this.categories = await Category.getDocuments()
+<span class="fstat-no" title="function not covered" >		async f</span>etchCategories () {
+<span class="cstat-no" title="statement not covered" >			this.c</span>ategories = await Category.getDocuments()
 		},
-		async submitData () {
-			try {
+<span class="fstat-no" title="function not covered" >		async s</span>ubmitData () {
+<span class="cstat-no" title="statement not covered" >			try {</span>
 				// eslint-disable-next-line camelcase
-				const { authors, authors_data, categories, tags, title, description } = this.comic
-				const newComic = await Comic.createDocument({ authors, authors_data, categories, tags, title, description, release_date: new Date() })
-				console.log(newComic)
-				<span class="missing-if-branch" title="if path not taken" >I</span>if (this.coverImageChanged) {
+				const { authors, authors_data, categories, tags, title, description } = <span class="cstat-no" title="statement not covered" >this.comic</span>
+				const newComic = <span class="cstat-no" title="statement not covered" >await C</span>omic.createDocument({ authors, authors_data, categories, tags, title, description, release_date: new Date() })
+<span class="cstat-no" title="statement not covered" >				console.</span>log(newComic)
+<span class="cstat-no" title="statement not covered" >				<span class="missing-if-branch" title="if path not taken" >I</span>if (this.coverImageChanged) {</span>
 <span class="cstat-no" title="statement not covered" >					try {</span>
 <span class="cstat-no" title="statement not covered" >						await n</span>ewComic.adminUploadField('cover_image_url', 'covers/' + newComic.id, this.coverImage)
 					} catch (err) {
@@ -1783,7 +1783,7 @@ const titleStack = ref(['Admin', 'Comic', 'Add'])
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-12T10:51:09.875Z
+                at 2022-08-16T11:11:58.137Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
